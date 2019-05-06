@@ -9,7 +9,7 @@ class FilePipe(BasePipe):
         kwargs_override = {'encoding': 'utf-8'}
         self.file = smart_open(filepath, mode, **{**kwargs, **kwargs_override})
 
-        super(FilePipe, self).__init__(*args, **{**kwargs, **kwargs_override})
+        super(FilePipe, self).__init__(*args, **kwargs)
 
     def close(self):
         super(FilePipe, self).close()
