@@ -6,9 +6,10 @@ class FilePipe(BasePipe):
     def __init__(self, filepath, mode, *args, **kwargs):
         self.filepath = filepath
         self.mode = mode
-        self.file = smart_open(filepath, mode, **kwargs)
+        kwargs_override = {'encoding': 'utf-8'}
+        self.file = smart_open(filepath, mode, **{**kwargs, **kwargs_override})
 
-        super(FilePipe, self).__init__(*args, **kwargs)
+        super(FilePipe, self).__init__(*args, **{**kwargs, **kwargs_override})
 
     def close(self):
         super(FilePipe, self).close()
